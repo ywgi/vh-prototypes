@@ -1,0 +1,18 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+    body {
+        color: #222222;
+    }
+    .dark body {
+        color: #ffffff;
+    }
+    *, *::before, *::after {
+        border-color: theme(--color-gray-400 / 50%);
+    }
+    .dark *, .dark *::before, .dark *::after {
+        border-color: #282828;
+    }
+}
