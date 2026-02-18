@@ -1,3 +1,4 @@
+import { Auth0Provider } from "@auth0/nextjs-auth0/client"
 import type { Metadata } from "next";
 import { Inter } from "next/font/google"
 import "./globals.css";
@@ -20,9 +21,12 @@ export default function RootLayout({
       <body
         className={`${inter.className} flex flex-col min-h-screen bg-gray-300 dark:bg-[#202020] border-gray-500 dark:border-[#282828]`}
       >
-        <ThemeProvider>
-          {children}
-        </ThemeProvider>
+        <Auth0Provider>
+          <ThemeProvider>
+            {children}
+          </ThemeProvider>
+        </Auth0Provider>
+
       </body>
     </html>
   );
