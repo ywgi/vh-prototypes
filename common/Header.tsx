@@ -9,13 +9,13 @@ import { usePathname } from "next/navigation"
 import { useTheme } from "next-themes"
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import MenuIcon from "@/icons/MenuIcon";
 
 const navLinks = [
     { href: "/dashboard", label: "Dashboard" },
     { href: "/inventory", label: "Inventory" },
     { href: "/crew", label: "Crew" },
     { href: "/calendar", label: "Calendar" },
-    { href: "/sold", label: "Sold" },
 ]
 
 export default function Header() {
@@ -30,7 +30,7 @@ export default function Header() {
     }
 
     return (
-        <header className="grid grid-cols-3 h-20 border-b-2 flex-row-reverse md:flex-row justify-between items-center p-4 overflow-hidden">
+        <header className="flex h-20 border-b-2 flex-row-reverse  justify-between items-center p-4 overflow-hidden md:grid md:grid-cols-3">
             <div className="relative h-full w-40">
                 <Image 
                     className="object-contain invert dark:invert-0"
@@ -38,8 +38,11 @@ export default function Header() {
                     alt="Ver Hoef Automotive logo"
                     fill
                 />
-            </div>        
-            <nav className="hidden md:flex gap-4items-center justify-center">
+            </div>
+            <div className="md:hidden">
+                <MenuIcon />       
+            </div>
+            <nav className="hidden md:flex gap-4 items-center justify-center">
                 {navLinks.map(({ href, label }) => (
                     <Link
                         key={href}

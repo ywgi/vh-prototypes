@@ -1,5 +1,18 @@
-import { auth0 } from "./lib/auth0"
+import { NextRequest, NextResponse } from 'next/server';
 
-export async function proxy(request: Request) {
-    return await auth0.middleware(request)
+export function proxy(request: NextRequest) {
+  const session = request.cookies.get('session_id');
+  const isLoginPage = request.nextUrl.pathname === '/';
+
+  if (!session && !isLoginPage) {
+    return NextResponse.redirect(new URL('/', request.url));
+  }
+
+  if (session && isLoginPage) {
+    return NextResponse.redirect(new URL('/dashboard', request.url));
+  }
+}
+
+export const config = {
+  matcher: ['/((?!api|_next/static|_next/image|.*\\.png$).*)']
 }

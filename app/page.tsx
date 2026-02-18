@@ -7,7 +7,7 @@ import { useState } from "react";
 
 export default function Home() {
   const [formData, setFormData] = useState({
-    username: "",
+    email: "",
     password: ""
   })
 
@@ -20,15 +20,22 @@ export default function Home() {
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
+
     const res = await fetch('/api/auth/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData)
+      body: JSON.stringify({
+        email: formData.email,  // you might want to rename this field
+        password: formData.password
+      })
     })
+
     if (res.ok) {
       window.location.href = '/dashboard'
     } else {
-      // show error
+      const data = await res.json()
+      // display data.error to the user however you want
+      console.error(data.error)
     }
   }
 
@@ -43,15 +50,15 @@ export default function Home() {
         className="flex flex-col gap-2 py-2 items-center justify-center md:py-4 md:gap-4" 
         onSubmit={handleSubmit}>
         <input 
-          className="px-2 py-1 border rounded focus:outline-0"
+          className="px-2 py-1  border rounded-xl focus:outline-gray-500 focus:outline-1 md:py-1.5"
           type="text"
-          name="username"
-          value={formData.username}
+          name="email"
+          value={formData.email}
           onChange={handleChange}
           placeholder="username"
         />
         <input 
-          className="px-2 py-1 border rounded focus:outline-0"
+          className="px-2 py-1  border rounded-xl focus:outline-gray-500 focus:outline-1 md:py-1.5"
           type="password"
           name="password"
           value={formData.password}
@@ -59,17 +66,12 @@ export default function Home() {
           placeholder="password"
         />
         <button 
-          className="px-10 py-2 bg-[#0087EB] dark:text-white rounded hover:transf" 
+          className="px-8 py-2 bg-[#0087EB] dark:text-white rounded-xl" 
           type="submit"
           >
             Login
         </button>
-        <a 
-          href="/auth/login"
-          className="px-10 py-2 bg-green-600 text-white rounded hover:opacity-90"
-        >
-          Login with Auth0
-        </a>
+
       </form>
     </main>
   );
