@@ -3,8 +3,7 @@ import { MongoClient } from 'mongodb'
 import bcrypt from 'bcrypt'
 import { env } from 'node:process'
 
-const uri = 'mongodb+srv://wert:uEKu9ZcCKHLUDFLC@myatlasclusteredu.wcyab7o.mongodb.net/?appName=myAtlasClusterEDU';
-console.log(uri);
+const uri = process.env.MONGODB_URI || "";
 
 async function main() {
   const client = new MongoClient(uri)
@@ -23,4 +22,4 @@ async function main() {
   await client.close()
 }
 
-main()
+main();
