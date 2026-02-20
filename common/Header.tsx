@@ -19,18 +19,18 @@ const navLinks = [
 ]
 
 export default function Header() {
-    const pathname = usePathname()
-    const {theme, setTheme} = useTheme()
-    const [mounted, setMounted] = useState(false)
+    const pathname = usePathname();
+    const {theme, setTheme} = useTheme();
+    const [mounted, setMounted] = useState(false);
 
-    useEffect(() => setMounted(true), [])
+    useEffect(() => setMounted(true), []);
 
     function toggleTheme() {
-        setTheme(theme === "dark" ? "light" : "dark")
+        setTheme(theme === "dark" ? "light" : "dark");
     }
 
     return (
-        <header className="flex h-20 border-b-2 flex-row-reverse  justify-between items-center p-4 overflow-hidden md:grid md:grid-cols-3">
+        <header className="flex bg-[#222222] h-20 sticky top-0 z-20 border-b-2 flex-row-reverse  justify-between items-center p-4 overflow-hidden md:grid md:grid-cols-3">
             <div className="relative h-full w-40">
                 <Image 
                     className="object-contain invert dark:invert-0"
