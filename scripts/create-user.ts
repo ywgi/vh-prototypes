@@ -18,7 +18,8 @@ async function main() {
     name: 'Your Name'
   })
 
-  console.log('User created')
+  console.log('User created');
+  
   await client.close()
 }
 
