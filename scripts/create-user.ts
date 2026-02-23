@@ -19,8 +19,8 @@ async function main() {
   })
 
   console.log('User created');
-  
-  await client.close()
+
+  await client.close();
 }
 
 main();
