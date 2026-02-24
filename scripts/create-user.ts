@@ -10,7 +10,7 @@ async function main() {
   await client.connect()
   const db = client.db('verhoef')
 
-  const passwordHash = await bcrypt.hash('test123', 10)
+  const passwordHash = await bcrypt.hash('test123', 10);
 
   await db.collection('users').insertOne({
     email: 'youremail@verhoefautomotive.com',
