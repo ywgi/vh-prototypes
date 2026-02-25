@@ -24,7 +24,7 @@ export default function InventoryClient({ vehicles }: { vehicles: Vehicle[] }) {
     return (
         <>
             <InventoryActionBar searchTerm={searchTerm} onSearchChange={setSearchTerm} />
-            <div className="divide-y-2 divide-[#282828]">
+            <div className="divide-y-2 divide-[#282828] md:flex md:flex-col md:items-center md:gap-4">
                 {filteredVehicles.length > 0 ? (
                     filteredVehicles.map((vehicle, index) => (
                         <VehicleItem vehicle={vehicle} key={index} />
