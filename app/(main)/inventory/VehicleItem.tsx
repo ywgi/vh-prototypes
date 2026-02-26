@@ -16,7 +16,7 @@ export default function VehicleItem({vehicle}: {vehicle: Vehicle}) {
                 <Image width={120} height={63} src={cleanUrl} alt="vehicle" className={`${getDaysOnLotBorder(Number(vehicle.daysOnLot))} rounded`}/>
             }
             <div className="flex flex-col justify-center gap-1 h-full">
-                <span className="text-xs">{vehicle.year} {vehicle.make} {vehicle.model}</span>
+                <span className="text-sm">{vehicle.year} {vehicle.make} {vehicle.model}</span>
                 <span className="text-xs text-gray-500 uppercase tracking-wider">Price: <span className="text-gray-400">${vehicle.price}</span></span>
                 <span className="text-xs text-gray-500 uppercase tracking-wider">Miles: <span className="text-gray-400">{vehicle.mileage}</span></span>
                 <span className="text-xs text-gray-500 uppercase tracking-wider">VIN: <span className="text-gray-400">{vehicle.vin}</span></span>
