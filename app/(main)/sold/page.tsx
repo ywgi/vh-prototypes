@@ -3,7 +3,7 @@ export default function SoldPage() {
         <div className="flex flex-col flex-1">
             <main>
                 <p>
-                    sold
+                    sold vehicles
                 </p>
             </main>
         </div>
